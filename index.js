@@ -1,8 +1,39 @@
 // This one will be a little tricky. So check out this overview first: https://www.youtube.com/watch?v=sJ-c3BA-Ypo
 
 // 1. Create a variable to store the singleton instance of the bank branch. "bankBranchInstance"
+let bankBranchInstance = null;
+
+// This is the main 
+class BankBranch {
+    constructor(BranchInfo) {
+        //this check if the bankBranchInstance is already set
+        if (bankBranchInstance !== null) {
+            /// When it returns it will return as null there aint no file that exist as just yet
+        return bankBranchInstance;    
+        }
+        this.BranchInfo = BranchInfo;
+        bankBranchInstance = this;
+    }
+
+    getBranchInfo(){
+        return this.BranchInfo;// this retrieves the branchInfo
+    }
+}
+console.log(bankBranchInstance);// Should show as null because the file dont exist as just yet
+
+const branchA = new BankBranch({name:"Mikey's", location:"Uptown"})
+
+console.log(bankBranchInstance);// its holds the Instance of the BankBranch now
+
+const branchB = new BankBranch({contact:"cellphone number",Owner:"John Doe"})
+
+console.log(branchA === branchB);// this should be true it holds the same instance
+console.log(bankBranchInstance === branchA);
+console.log(bankBranchInstance === branchB);
+
 
 // 2. Define a class called `BankBranch` for managing branch information.
+
 
 // 3. In the `BankBranch` class:
 //    - Create a constructor that takes `branchInfo` as a parameter.
